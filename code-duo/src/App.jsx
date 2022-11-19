@@ -12,7 +12,7 @@ function App() {
       </div> */}
 
       <div className="flex items-center justify-center h-screen">
-        <LoginBox ></LoginBox>
+        <LoginBox></LoginBox>
       </div>
     </div>
 
