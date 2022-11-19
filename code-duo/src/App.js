@@ -1,23 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
-
+// import Profile from './components/Profile'
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='   '>
+      <head>
+        <title>
+          Name_of_Project
+        </title>
+      </head>
+
+      <span className='h-12 border border-ruby-400 flex flex-row'>
+        <a href="/api/auth/login">Login</a>
+      </span>
+      <span>
+        <a href="/api/auth/logout">Logout</a>
+      </span>
+
+
+      <p className="underline decoration-sky-500"><code> This is a great piece of text</code></p>
+      {/* <Profile></Profile> */}
     </div>
   );
 }
