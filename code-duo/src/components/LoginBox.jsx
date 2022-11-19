@@ -16,14 +16,14 @@ const LoginBox = () => {
                     type="button"
                     data-mdb-ripple="true"
                     data-mdb-ripple-color="light"
-                    className={clicked ? " mr-5 px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md " : "mr-5 px-6 py-2.5 bg-gray-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md" }
+                    className={!clicked ? " mr-5 px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700" : "mr-5 px-6 py-2.5 bg-gray-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md" }
                     onClick={() => setClicked(true)}
                 >Company</button>
                 <button
                     type="button"
                     data-mdb-ripple="true"
                     data-mdb-ripple-color="light"
-                    className={!clicked ? " px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md " : "px-6 py-2.5 bg-gray-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md" }
+                    className={clicked ? " px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700" : "px-6 py-2.5 bg-gray-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md" }
                     onClick={() => setClicked(false)}
                 >Applicant</button>
             </div>    
