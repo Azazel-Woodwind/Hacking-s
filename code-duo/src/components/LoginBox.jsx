@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
-import Applicant from "../pages/Applicant";
-import Company from "../pages/Company";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import CompanyForm from "../pages/CompanyForm";
+import ApplicantForm from "../pages/ApplicantForm";
 
 const LoginBox = () => {
-    return (
-        <Router>
+    const [companyClicked, setCompanyClicked] = useState(true);
+    const [optionSelected, setOptionSelected] = useState(false);
+
+    if (!optionSelected) {
+        return (
             <div className="p-8 bg-[#3F3F3F] rounded-3xl text-white w-80 ">
                 <p className="text-3xl text-center mb-9">
                     <b>Login</b>
@@ -14,46 +16,50 @@ const LoginBox = () => {
                     Are you from a <b>company</b> or are you a solo{" "}
                     <b>applicant</b>?
                 </p>
-                <div className=" ">
-                    <div className="grid grid-cols-2 grid-row-1 mt-4  ">
-                        <Link to="/company">
-                            <button
-                                type="button"
-                                data-mdb-ripple="true"
-                                data-mdb-ripple-color="light"
-                                className={
-                                    "mr-5 px-6 py-2.5 bg-gray-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md"
-                                }
-                            >
-                                Company
-                            </button>
-                        </Link>
-                        <Link to="/applicant">
-                            <button
-                                type="button"
-                                data-mdb-ripple="true"
-                                data-mdb-ripple-color="light"
-                                className={
-                                    "mr-5 px-6 py-2.5 bg-gray-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md"
-                                }
-                            >
-                                Applicant
-                            </button>
-                        </Link>
-                    </div>
+                <div className="grid grid-cols-2 grid-row-1 mt-4  ">
+                    <button
+                        type="button"
+                        data-mdb-ripple="true"
+                        data-mdb-ripple-color="light"
+                        className={
+                            companyClicked
+                                ? "mr-5 px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md"
+                                : "mr-5 px-6 py-2.5 bg-gray-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md"
+                        }
+                        onClick={() => setCompanyClicked(true)}
+                    >
+                        Company
+                    </button>
+                    <button
+                        type="button"
+                        data-mdb-ripple="true"
+                        data-mdb-ripple-color="light"
+                        className={
+                            !companyClicked
+                                ? "mr-5 px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md"
+                                : "mr-5 px-6 py-2.5 bg-gray-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md"
+                        }
+                        onClick={() => setCompanyClicked(false)}
+                    >
+                        Applicant
+                    </button>
                 </div>
-
-                <Switch>
-                    <Route path="/company">
-                        <Applicant />
-                    </Route>
-                    <Route path="/applicant">
-                        <Company />
-                    </Route>
-                </Switch>
+                <button
+                    type="button"
+                    data-mdb-ripple="true"
+                    data-mdb-ripple-color="light"
+                    className={
+                        "px-6 py-2.5 bg-gray-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md"
+                    }
+                    onClick={() => setOptionSelected(true)}
+                >
+                    Ok
+                </button>
             </div>
-        </Router>
-    );
+        );
+    } else {
+        return companyClicked ? <CompanyForm /> : <ApplicantForm />;
+    }
 };
 
 export default LoginBox;
