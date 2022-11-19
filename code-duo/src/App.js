@@ -1,5 +1,8 @@
 import './App.css';
 // import Profile from './components/Profile'
+import LoginButton from './components/LoginButton';
+import LogoutButton from './components/LogoutButton';
+import Profile from './components/Profile';
 function App() {
   return (
     <div className='   '>
@@ -10,14 +13,15 @@ function App() {
       </head>
 
       <span className='h-12 border border-ruby-400 flex flex-row'>
-        <a href="/api/auth/login">Login</a>
+        <LoginButton></LoginButton>
       </span>
+
+      <Profile></Profile>
       <span>
-        <a href="/api/auth/logout">Logout</a>
+        <LogoutButton></LogoutButton>
       </span>
 
 
-      <p className="underline decoration-sky-500"><code> This is a great piece of text</code></p>
       {/* <Profile></Profile> */}
     </div>
   );
