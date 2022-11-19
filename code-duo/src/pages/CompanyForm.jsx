@@ -23,6 +23,7 @@ const CompanyForm = () => {
 
         const res = await fetch("/api/users", reqOptions);
         const data = await res.json();
+        sessionStorage.setItem("token", `Bearer ${data.token}`);
         navigate("/company");
     };
 
