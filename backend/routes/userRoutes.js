@@ -4,6 +4,8 @@ const User = require("../models/userModel");
 const Company = require("../models/companyModel");
 const Applicant = require("../models/applicantModel");
 const PendingProblem = require("../models/pendingProblemModel");
+const protect = require("../middleware/authMiddleware");
+const jwt = require("jsonwebtoken");
 
 // @desc register new applicant
 // @route POST /api/users
@@ -29,13 +31,13 @@ router.post("/users", async (req, res) => {
         });
     }
 
-    res.status(201).json(user);
+    res.status(201).json({ ...user, token: generateToken(user._id) });
 });
 
 // @desc register new applicant
 // @route get /api/me
 // @access PRIVATE
-router.get("/me", async (req, res) => {
+router.get("/me", protect, async (req, res) => {
     if (req.user.role === "Applicant") {
         const user = await Applicant.findOne({ _id: req.user._id });
         if (user) {
@@ -70,12 +72,15 @@ router.post("/pending-problems", async (req, res) => {
 // @desc updates list of desired topics for a co
 // @route PUT /api/topics
 // @access PRIVATE
-router.put("/topics", async (req, res) => {
+router.put("/topics", protect, async (req, res) => {
     const { topics } = req.body;
-    const company = await Company.findById(req.user);
+    const company = await Company.findById(req.user._id);
     company.topics = topics;
     company.save();
     res.status(200).json(company);
 });
+
+const generateToken = (id) =>
+    jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "30d" });
 
 module.exports = router;
