@@ -44,17 +44,19 @@ const LoginBox = () => {
                         Applicant
                     </button>
                 </div>
+                <div className="text-center mt-3">
                 <button
                     type="button"
                     data-mdb-ripple="true"
                     data-mdb-ripple-color="light"
                     className={
-                        "px-6 py-2.5 bg-gray-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md"
+                        "mr-5 px-6 py-2.5 bg-gray-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md"
                     }
                     onClick={() => setOptionSelected(true)}
                 >
                     Ok
                 </button>
+                </div>
             </div>
         );
     } else {
